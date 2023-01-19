@@ -1,0 +1,13 @@
+package testLayer;
+
+import pageLayer.Contattaci;
+import testBase.TestBase;
+
+public class SearchContacttaci extends TestBase{
+
+	public void location() throws InterruptedException
+	{
+		Contattaci ci=new Contattaci();
+		Thread.sleep(2000);
+		ci.checkcontattaci();	}
+}

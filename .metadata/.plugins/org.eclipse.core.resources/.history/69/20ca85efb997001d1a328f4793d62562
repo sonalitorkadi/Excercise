@@ -1,0 +1,11 @@
+package pageLayer;
+
+public class HomePage 
+{
+
+	@Test
+	public void display()
+	{
+		System.out.println("Display Method");;
+	}
+}
