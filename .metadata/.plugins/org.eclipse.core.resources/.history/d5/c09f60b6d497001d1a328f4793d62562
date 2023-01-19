@@ -1,0 +1,35 @@
+package testBase;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+/*import pageLayer.Contattaci;
+*/
+public class TestBase {
+	public static WebDriver driver;
+
+	@Test
+	public void setup() throws InterruptedException
+	{
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.ferlini.it/");
+		driver.manage().window().maximize();
+		String title=driver.getTitle();
+		System.out.println("Title of the page is- "+title);
+		Thread.sleep(3);
+		driver.findElement(By.xpath("//span[contains(text(),'Contattaci')]")).click();
+		String titleCon=driver.getTitle();
+		System.out.println("Title of the Contattaci page is-"+titleCon);
+	//	driver.findElement(By.xpath("//body/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[2]")).click();
+
+	String msg=	driver.findElement(By.xpath("//label[@xpath='1']")).sendKeys("Welcome To Ferlini");
+	System.out.println("Title of the page is- "+msg);
+
+	}
+
+}

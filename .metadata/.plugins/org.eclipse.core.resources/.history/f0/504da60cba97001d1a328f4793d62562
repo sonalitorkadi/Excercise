@@ -1,0 +1,41 @@
+package testLayer;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import pageLayer.HomePageHubSpot;
+import pageLayer.SignUpPageHubSpot;
+import utility.UtilClass;
+
+public class LoginPTestHubSpot 
+{
+	public static void main(String[] args) throws InterruptedException
+	{
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://app.hubspot.com/login");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+
+		driver.manage().deleteAllCookies();
+		//Actions act = new Actions(driver);
+
+		HomePageHubSpot home=new HomePageHubSpot(driver);
+		Actions act = new Actions(driver);
+		UtilClass util = new UtilClass(driver);
+		
+		home.clickOnSignUpLink();
+
+		SignUpPageHubSpot signup=new SignUpPageHubSpot(driver);
+		signup.enterFirstName("Sonali");
+		Thread.sleep(2000);
+		signup.enterLastName("Torkadi");	
+		Thread.sleep(2000);
+
+		signup.enaterEmail("sonali@gmail.com");
+		signup.clickOnNextButton();
+	}
+}
